@@ -4,6 +4,8 @@ import TodoForm from './components/TodoForm';
 import './App.css';
 import moment from 'moment';
 
+
+
 // the App component manages the To Do list
 function App() {
   
@@ -20,6 +22,7 @@ function App() {
       updateTask('');
     }
    }
+
 
   // add new task to task list
   // or edit existing task
@@ -69,7 +72,7 @@ function App() {
   // create new array so react will rerender to "actual" change in state
   function completeTask(task) {
     const newTasks = [...tasks];
-    console.log('Task [', task.text,'] is completed.')
+
     for (let i = 0; i < newTasks.length; i++) {
       if (newTasks[i].id === task.id) {
         newTasks[i].completed = true;
@@ -82,7 +85,6 @@ function App() {
 // filter out task to be deleted
   function deleteTask(task) {
     let newTasks = [...tasks];
-    console.log('Task [', task.text, '] is deleted.')
     newTasks = newTasks.filter((newTask) => newTask.id !== task.id);
     localStorage.setItem(local_storage_key, JSON.stringify(newTasks));
     setTasks(JSON.parse(localStorage.getItem(local_storage_key)) || []);
@@ -160,11 +162,13 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div id='header-container'>
-          <button title='Reset all tasks' className='icon-buttons' type='button' onClick={resetAllTasks}>
+          <button title='Reset all tasks' className='icon-buttons' type='button' id="reset-button" onClick={resetAllTasks}>
+            <p>Start over</p>
             <i className='material-icons restart_alt'>restart_alt</i>
           </button>
-          <h1 id='header-title'>To Do</h1>
+          <h1 id='header-title'>TO DO</h1>
           <button title='Add a new task' className='icon-buttons' id='add-button' type='button' onClick={toggleForm}>
+            <p>Add new task</p>
             <i className='material-icons add'>add_circle</i>
           </button>
         </div>
@@ -179,7 +183,7 @@ function App() {
             {!showForm && (overdueTasks.length !== 0 && overdueTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='OVERDUE' tasks={overdueTasks} toggleForm={toggleForm} handleEdit={handleEdit} />}
             {!showForm && (todayTasks.length !== 0 && todayTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='TODAY' tasks={todayTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
             {!showForm && (tomorrowTasks.length !== 0 && tomorrowTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='TOMORROW' tasks={tomorrowTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
-            {!showForm && (nextWeekTasks.length !== 0 && nextWeekTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='NEXT 7 DAYS' tasks={nextWeekTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
+            {!showForm && (nextWeekTasks.length !== 0 && nextWeekTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='THIS WEEK' tasks={nextWeekTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
             {!showForm && (futureTasks.length !== 0 && futureTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='FUTURE' tasks={futureTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
             {!showForm && (completedTasks.length !== 0 && completedTasks !== null) && <TodoList completeTask={completeTask} deleteTask={deleteTask} title='COMPLETED' tasks={completedTasks} toggleForm={toggleForm} handleEdit={handleEdit}/>}
 
