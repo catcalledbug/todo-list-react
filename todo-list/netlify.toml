@@ -1,5 +1,6 @@
-[build]
-  base    = ""
+[build]	
+  command = "yarn build"
+  build = "build"
   publish = "build"
   command = "REACT_APP_STAGE=dev npm run build"
 
