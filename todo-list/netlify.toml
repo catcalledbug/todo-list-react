@@ -1,5 +1,5 @@
 [build]	
-  base    = "todo-list"
+  base    = ""
   publish = "build"
   command = "REACT_APP_STAGE=dev npm run build"
 
