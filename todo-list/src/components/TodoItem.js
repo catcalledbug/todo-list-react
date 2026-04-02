@@ -20,12 +20,12 @@ function TodoItem({ tasks, deleteTask, completeTask, title, handleEdit }) {
         let indicators = document.getElementsByClassName('color-indicator');
 
         let colorMap = {
-            'OVERDUE': 'red',
-            'TODAY': 'orange', 
-            'TOMORROW': 'blue',
-            'NEXT 7 DAYS': 'purple',
-            'FUTURE': 'gray',
-            'COMPLETED': 'green'
+            'OVERDUE': '#BD0404',
+            'TODAY': '#BDBA04', 
+            'TOMORROW': '#0475BD',
+            'THIS WEEK': '#C440BA',
+            'FUTURE': '#C66872',
+            'COMPLETED': '#4FAF47'
         }
 
         for (const indicator of indicators) {

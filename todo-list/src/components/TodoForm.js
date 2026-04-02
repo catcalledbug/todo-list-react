@@ -5,17 +5,15 @@ import moment from 'moment';
 function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
     let currentDate = moment().format();
 
-
     // Initialize state variable including: 
-        // Edit Mode: if a task is selected, fill the task input with that previous text. If it's a new task, fill with empty
-        // If selecting a task for edit mode, show that task's due date
-        // If creating new task, initialize with current date
+    // Edit Mode: if a task is selected, fill the task input with that previous text. If it's a new task, fill with empty
+    // If selecting a task for edit mode, show that task's due date
+    // If creating new task, initialize with current date
     const [dueDate, updateDueDate] = useState(selectedTask ? selectedTask.dueDate : currentDate);
     useEffect(() => {
         if (selectedTask !== null) {
             updateTask(selectedTask.text);
             updateDueDate(selectedTask.dueDate);
-            console.log(selectedTask)
         }
     }, [selectedTask])
 
@@ -75,18 +73,20 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
         }
     }
 
+   
     // Changes color of date banner as the user chooses a due date
     // Ex. Red to signify it will initially be marked as overdue
     useEffect(() => {
         const dueDateBanner = document.getElementById('due-date-banner');
             if (moment(dueDate).isBefore(currentDate) || moment(dueDate).isSame(currentDate)) {
-                dueDateBanner.style.backgroundColor = '#bd0404';
+                dueDateBanner.style.backgroundColor = '#BD0404';
                 dueDateBanner.style.color = 'white';
             } else if (moment(dueDate).isAfter(currentDate)) {
-                dueDateBanner.style.backgroundColor = 'gray';
+                dueDateBanner.style.backgroundColor = '#BDBA04';
                 dueDateBanner.style.color = 'black'; 
             }
     });
+
 
     return (
         <div className='form-container'>
@@ -96,7 +96,7 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
                 </button>
                 <button id='submit-button' type='submit' className='icon-buttons submit' onClick={(event) => handleSubmit(event, task, dueDate)}>OK</button>
             </div>
-            <form id='task-form'>
+            <form id='task-form' onKeyDown={(event) => event.key === 'Enter' ? handleSubmit(event, task, dueDate) : ''}>
                 <input 
                     id='form-input'
                     type='text'
