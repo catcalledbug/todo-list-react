@@ -40,7 +40,7 @@ function TodoItem({ tasks, deleteTask, completeTask, title, handleEdit }) {
             <li key={task.id} id='list-item'>
                 <span title={title} className='color-indicator'></span>
                 <div className='todo-item-container'>
-                    <div onClick={(event) => handleEdit(task)} className='todo-item'>
+                    <div onFocus={(event) => handleEdit(task, event)} onClick={(event) => handleEdit(task, event)} className='todo-item' tabIndex="0">
                         <span className='todo-item-text'>{task.text}</span>
                         <span className='todo-item-due-date'>{dueDate}</span>
                     </div>

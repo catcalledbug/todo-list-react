@@ -87,7 +87,6 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
             }
     });
 
-
     return (
         <div className='form-container'>
             <div id='form-button-container'>
@@ -96,7 +95,18 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
                 </button>
                 <button id='submit-button' type='submit' className='icon-buttons submit' onClick={(event) => handleSubmit(event, task, dueDate)}>OK</button>
             </div>
-            <form id='task-form' onKeyDown={(event) => event.key === 'Enter' ? handleSubmit(event, task, dueDate) : ''}>
+            <form id='task-form' onKeyDown={(event) => {
+                    if (event.key === 'Enter' && event.target.className != 'time-preset-button') {
+                        if (event.key === 'Escape') {
+                            handleClose();
+                        }
+                        handleSubmit(event, task, dueDate);
+                    }
+                    if (event.key === 'Escape') {
+                        handleClose();
+                    }
+                }
+            }>
                 <input 
                     id='form-input'
                     type='text'
@@ -113,7 +123,7 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
                         type="datetime-local"
                         id="due-date"
                         name="dueDate"
-
+                        tabIndex="-1"
                         value={moment(dueDate).format("yyyy-MM-DDTHH:mm")}
                         // when onChange event occurs (user selects value in input)
                         // call updateDueDate to pass curr value of input as the arg to updateDueDate
@@ -124,24 +134,24 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
                     <tbody>
                         <tr>
                             <td> 
-                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 9, min: 30})} className='time-preset-button'>9:30 AM</button>
-                                <button type='button' onClick= {() => handlePresetBtns('addMin', 10)}  className='time-preset-button'>+10 min</button>
-                                <button type='button' onClick= {() => handlePresetBtns('subMin', 10)} className='time-preset-button'>-10min</button>
+                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 9, min: 30})} tabIndex="0" className='time-preset-button'>9:30 AM</button>
+                                <button type='button' onClick= {() => handlePresetBtns('addMin', 10)} tabIndex="0" className='time-preset-button'>+10 min</button>
+                                <button type='button' onClick= {() => handlePresetBtns('subMin', 10)} tabIndex="0" className='time-preset-button'>-10min</button>
                             </td>
                             <td>
-                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 12, min: 0})}  className='time-preset-button'>12:00 PM</button>
-                                <button type='button' onClick= {() => handlePresetBtns('addHour', 1)}  className='time-preset-button'>+1 hr</button>
-                                <button type='button' onClick= {() => handlePresetBtns('subHour', 1)}  className='time-preset-button'>-1 hr</button>
+                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 12, min: 0})} tabIndex="0" className='time-preset-button'>12:00 PM</button>
+                                <button type='button' onClick= {() => handlePresetBtns('addHour', 1)} tabIndex="0" className='time-preset-button'>+1 hr</button>
+                                <button type='button' onClick= {() => handlePresetBtns('subHour', 1)} tabIndex="0" className='time-preset-button'>-1 hr</button>
                             </td>
                             <td>
-                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 18, min: 30})}  className='time-preset-button'>6:30 PM</button>
-                                <button type='button' onClick= {() => handlePresetBtns('addHour', 3)}  className='time-preset-button'>+3 hr</button>
-                                <button type='button' onClick= {() => handlePresetBtns('subHour', 3)}  className='time-preset-button'>-3 hr</button>
+                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 18, min: 30})} tabIndex="0" className='time-preset-button'>6:30 PM</button>
+                                <button type='button' onClick= {() => handlePresetBtns('addHour', 3)} tabIndex="0" className='time-preset-button'>+3 hr</button>
+                                <button type='button' onClick= {() => handlePresetBtns('subHour', 3)} tabIndex="0" className='time-preset-button'>-3 hr</button>
                             </td>
                             <td>
-                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 22, min: 0})}  className='time-preset-button'>10:00 PM</button>
-                                <button type='button' onClick= {() => handlePresetBtns('addHour', 24)}  className='time-preset-button'>+1 day</button> 
-                                <button type='button' onClick= {() => handlePresetBtns('subHour', 24)}  className='time-preset-button'>-1 day</button>
+                                <button type='button' onClick= {() => handlePresetBtns('set', {hour: 22, min: 0})} tabIndex="0" className='time-preset-button'>10:00 PM</button>
+                                <button type='button' onClick= {() => handlePresetBtns('addHour', 24)} tabIndex="0" className='time-preset-button'>+1 day</button> 
+                                <button type='button' onClick= {() => handlePresetBtns('subHour', 24)} tabIndex="0" className='time-preset-button'>-1 day</button>
                             </td>
                         </tr>
                     </tbody>    

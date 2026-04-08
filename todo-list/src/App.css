@@ -93,10 +93,9 @@ td > button {
   font-family: 'VT323', monospace;
   font-size: 18px;
   cursor: pointer;
-  border: 0;
   padding: 0;
   background-color: white;
-  border: 0.5px solid rgb(46, 46, 46);
+  border: 1px solid black;
 }
 #task-form {
   border: black solid 1px;
@@ -161,6 +160,11 @@ input[type="datetime-local" i] {
   justify-content: space-between;
   width: 100%;
 }
+.todo-item:hover,
+.todo-item:focus {
+    cursor: pointer;
+}
+
 #list-item {
   display: flex;
   background-color: white;
@@ -252,7 +256,8 @@ button.icon-buttons {
   color: white;
   width: 45px;
 }
-.material-icons.add:hover {
+.material-icons.add:hover,
+.material-icons.add:focus {
   color: #4FAF47;
 }
 .material-icons.restart_alt {
@@ -260,7 +265,8 @@ button.icon-buttons {
   color: white;
   width: 40px;
 }
-.material-icons.restart_alt:hover {
+.material-icons.restart_alt:hover,
+.material-icons.restart_alt:focus {
   color: #BD0404;
 }
 i.material-icons.delete {
@@ -303,7 +309,8 @@ i.material-icons.delete {
   background-color: whitesmoke;
   color: black;
 }
-#submit-button:hover {
+#submit-button:hover,
+#submit-button:focus {
   color: #4FAF47;
 }
 #form-button-container {
@@ -320,6 +327,10 @@ i.material-icons.delete {
   padding-top: 15px;
 }
 
+/* #no-tasks-add {
+    align-self: center;
+    justify-self: center;
+} */
 
 
 
@@ -328,24 +339,48 @@ i.material-icons.delete {
     button#add-button p, button#reset-button p {
         display: none;
     }
+    .material-icons.add, .material-icons.restart_alt {
+        color: white;
+        background-color: transparent;
+        border: none;
+    }
+    button#add-button, button#reset-button {
+        background-color: transparent;
+        border: none;
+    }
+    /* button#no-tasks-add {
+        display: flex;
+        background-color: whitesmoke;
+        padding: 0.6rem;
+        border-radius: 50px;
+        justify-content: center;
+        font-weight: bold;
+        align-items: center;
+        height: 50px;
+        width: 10rem;
+    } */
+    /* #no-tasks-add i {
+        font-size: 35px;
+        margin-bottom: 15px;
+        color: black;
+    } */
 }
 
 /* anything larger than phone */
 @media (min-width: 564px) {
-    td > button:hover {
+    td > button:hover,
+    td > button:focus {
         background-color: rgb(232, 232, 232);
         border: 1px solid rgba(#000, .05);
         transition: all 150ms linear;
         font-size: 20px;
-    } 
-    
-    button#add-button, button#reset-button {
+    }
+
+    button#add-button, button#reset-button, button#no-tasks-add {
         display: flex;
         background-color: whitesmoke;
-        width: 25%;
         padding: 0.6rem;
         border-radius: 50px;
-        /* gap: 5px; */
         justify-content: center;
         font-weight: bold;
         align-items: center;
@@ -389,7 +424,7 @@ i.material-icons.delete {
       display: flex;
       flex-direction: column;
       position: absolute;
-      top: 13%;
+      top: 22%;
     }
 
     /* List items */
