@@ -219,8 +219,6 @@ span.todo-item-due-date {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* position: absolute;
-    top: 52%; */
 }
 span#time-from-now {
   font-size: 17px;
@@ -395,7 +393,7 @@ i.material-icons.delete {
     }
 }
 
-/* anything smaller than laptop */
+
 @media (max-width: 900px) {
     html, body {
       max-width: 100%;
@@ -423,8 +421,7 @@ i.material-icons.delete {
       background-color: gainsboro;
       display: flex;
       flex-direction: column;
-      position: absolute;
-      top: 22%;
+      margin-top: 15%;
     }
 
     /* List items */
@@ -502,6 +499,6 @@ i.material-icons.delete {
         margin-top: 10px;
     }
     #all-lists-container {
-        /* margin-top: 12%; */
+        margin-top: 15%;
       }
 }
