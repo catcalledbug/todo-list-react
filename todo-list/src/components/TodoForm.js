@@ -96,7 +96,7 @@ function TodoForm({ addTask, toggleForm, selectedTask, updateTask, task }) {
                 <button id='submit-button' type='submit' className='icon-buttons submit' onClick={(event) => handleSubmit(event, task, dueDate)}>OK</button>
             </div>
             <form id='task-form' onKeyDown={(event) => {
-                    if (event.key === 'Enter' && event.target.className != 'time-preset-button') {
+                    if (event.key === 'Enter' && event.target.className !== 'time-preset-button') {
                         if (event.key === 'Escape') {
                             handleClose();
                         }

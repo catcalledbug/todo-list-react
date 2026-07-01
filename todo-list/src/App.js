@@ -110,7 +110,7 @@ function App() {
     // edit mode
     function handleEdit(task, event) {
         event.preventDefault();
-        if (event.target.className == 'todo-item') {
+        if (event.target.className === 'todo-item') {
             // if user clicks enter
             let item = event.target;
             item.addEventListener("keyup", (event) => {
