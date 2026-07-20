@@ -6,8 +6,12 @@ function TodoItem({ tasks, deleteTask, completeTask, title, handleEdit }) {
     let dueDate = '';
 
 
+<<<<<<< HEAD
     function handleButton(event, btnType, task) {
         event.stopPropagation();
+=======
+    function handleButton(btnType, task) {
+>>>>>>> dc61789ed40ea5a46c0c9016f0d04199cccb170c
         if (btnType === 'delete') {
             deleteTask(task);
         }   
