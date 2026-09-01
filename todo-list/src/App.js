@@ -178,7 +178,7 @@ function App() {
                     <p>Clear all tasks</p>
                     <i className='material-icons restart_alt'>restart_alt</i>
                 </button>
-                <h1 id='header-title'>TO DO</h1>
+                <h1 id='header-title'>Task Tracker</h1>
                 <button title='Add a new task' className='icon-buttons' id='add-button' type='button' onClick={toggleForm}>
                     <p>Add new task</p>
                     <i className='material-icons add'>add_circle</i>
