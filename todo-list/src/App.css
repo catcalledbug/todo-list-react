@@ -40,6 +40,7 @@ html, body {
 #header-title {
   font-size: 4rem;
   min-width: 8rem;
+  text-align: center;
 }
 .form-container {
     margin-top: 25px;
